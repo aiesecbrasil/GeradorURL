@@ -17,8 +17,8 @@ const copyMsg = document.getElementById("copyMsg");
 // Siglas dos produtos/programas da AIESEC
 const siglaProduto = [
     'GV',  // Voluntário Global
-    'GTa', // Talento Global Short Term
-    'GTa', // Talento Global Mid e Long Term
+    'GTas', // Talento Global Short Term
+    'GTaml', // Talento Global Mid e Long Term
     'GTe'  // Professor Global
 ];
 
