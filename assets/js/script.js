@@ -4,9 +4,9 @@ const resultUrl = document.getElementById("resultUrl");
 const copyMsg = document.getElementById("copyMsg");
 const siglaProduto = [
     'GV', // Voluntário Global
-    'GTs', // Talento Global Short Term
-    'GTml', // Talento Global Mid e Long Term
-    'PG' // Professor Global
+    'GTa', // Talento Global Short Term
+    'GTa', // Talento Global Mid e Long Term
+    'GTe' // Professor Global
 ];
 const escritorios = [
     "AB",  // ABC
