@@ -43,6 +43,7 @@ let canal;
 let projeto;
 let anuncio;
 let cl;
+
 generateBtn.addEventListener("click", () => {
     const baseUrl = "https://aiesec.org.br";
 
@@ -52,10 +53,43 @@ generateBtn.addEventListener("click", () => {
     let utm_term = document.getElementById("utm_term");
     let utm_content = document.getElementById("utm_content");
 
+    if(
+    utm_source.value === "" || 
+    utm_medium.value === "" || 
+    utm_campaign.value.trim() === "" ||
+    utm_term.value === "" ||
+    utm_content.value === ""
+    ){
+
+        // 🔻 Modal de erro
+            const modal = document.getElementById('exampleModalLong');
+            const myModal = new bootstrap.Modal(modal);
+            const botaoEnviar = document.getElementById("botaoConfirmar");
+            const botaoRemover = document.getElementById("botaoCancelar");
+
+            const tituloModal = document.getElementById("exampleModalLongTitle");
+
+            tituloModal.textContent = "Alguns campos não foram preenchidos";
+
+            document.getElementById("DadosAqui").textContent = `Por favor, preencha todos os campos`;
+            botaoEnviar.style.display = 'none';
+            botaoEnviar.disabled = true;
+            botaoRemover.textContent = "Corrigir";
+
+            myModal.show();
+
+            console.error("Alguns campos não foram preenchidos");
+            return;
+
+    }
+
     utm_source = utm_source.options[utm_source.selectedIndex].value;
     utm_medium = utm_medium.options[utm_medium.selectedIndex].value;
     utm_term = utm_term.options[utm_term.selectedIndex].value;
     utm_content = utm_content.options[utm_content.selectedIndex].value;
+
+    
+    
     utm_source = encodeURIComponent(slugify(utm_source));
     utm_medium = encodeURIComponent(slugify(utm_medium));
     utm_campaign = encodeURIComponent(slugify(document.getElementById("utm_campaign").value.trim()));
@@ -395,7 +429,7 @@ async function carregarElemento() {
         // Quando todas as opções estiverem prontas o botão se tranforma em "Selecione" e 
         // ativa o Menu Suspenso novamente
         defaultOption_canal.textContent = "Selecione";
-        defaultOption_canal.removeAttribute("disabled");
+        dropdown_canal.removeAttribute("disabled");
 
 
 
