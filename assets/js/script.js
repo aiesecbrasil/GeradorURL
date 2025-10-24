@@ -62,6 +62,70 @@ let ArrayProduto;
 
 // Objeto que armazenará os campos retornados pela API
 let campos;
+let canal;
+let projeto;
+let anuncio;
+let cl;
+
+generateBtn.addEventListener("click", () => {
+    const baseUrl = "https://aiesec.org.br";
+
+    let utm_source = document.getElementById("utm_source");
+    let utm_medium = document.getElementById("utm_medium");
+    let utm_campaign = document.getElementById("utm_campaign");
+    let utm_term = document.getElementById("utm_term");
+    let utm_content = document.getElementById("utm_content");
+
+    if(
+    utm_source.value === "" || 
+    utm_medium.value === "" || 
+    utm_campaign.value.trim() === "" ||
+    utm_term.value === "" ||
+    utm_content.value === ""
+    ){
+
+        // 🔻 Modal de erro
+            const modal = document.getElementById('exampleModalLong');
+            const myModal = new bootstrap.Modal(modal);
+            const botaoEnviar = document.getElementById("botaoConfirmar");
+            const botaoRemover = document.getElementById("botaoCancelar");
+
+            const tituloModal = document.getElementById("exampleModalLongTitle");
+
+            tituloModal.textContent = "Alguns campos não foram preenchidos";
+
+            document.getElementById("DadosAqui").textContent = `Por favor, preencha todos os campos`;
+            botaoEnviar.style.display = 'none';
+            botaoEnviar.disabled = true;
+            botaoRemover.textContent = "Corrigir";
+
+            myModal.show();
+
+            console.error("Alguns campos não foram preenchidos");
+            return;
+
+    }
+
+    utm_source = utm_source.options[utm_source.selectedIndex].value;
+    utm_medium = utm_medium.options[utm_medium.selectedIndex].value;
+    utm_term = utm_term.options[utm_term.selectedIndex].value;
+    utm_content = utm_content.options[utm_content.selectedIndex].value;
+
+    
+    
+    utm_source = encodeURIComponent(slugify(utm_source));
+    utm_medium = encodeURIComponent(slugify(utm_medium));
+    utm_campaign = encodeURIComponent(slugify(document.getElementById("utm_campaign").value.trim()));
+
+    const utm_term_sigla  = ArrayCl.indexOf(utm_term);
+    const utm_content_sigla = ArrayProduto.indexOf(utm_content);
+    const rota = utm_content === "Talento Global Short Term" || utm_content === "Talento Global Mid e Long Term" ? "Talento Global": utm_content;
+    
+    const fullUrl = `${baseUrl}/${slugify(rota)}/?utm_source=${utm_source}&utm_medium=${utm_medium}&utm_campaign=${utm_campaign}&utm_term=${escritorios[utm_term_sigla].toLowerCase()}&utm_content=${siglaProduto[utm_content_sigla].toLowerCase()}`;
+
+    resultUrl.value = fullUrl;
+    copyMsg.textContent = "";
+});
 
 
 // --------------------- BOTÃO GERAR ---------------------
@@ -198,6 +262,44 @@ async function carregarElemento() {
             dropdownMedium.appendChild(opt);
         });
         dropdownMedium.removeAttribute("disabled");
+
+        // Quando todas as opções estiverem prontas o botão se tranforma em "Selecione" e 
+        // ativa o Menu Suspenso novamente
+        defaultOption_Como_Conheceu.textContent = "Selecione";
+        dropdown_Como_Conheceu.removeAttribute("disabled");
+
+
+
+
+
+        const canal = campos.find(field => field.label === "Como?");
+        const opcoe_canal = canal.config.settings.options;
+
+        var todasopcoe_canal = opcoe_canal.reduce(
+            function (prev, curr) {
+
+                if (curr.status == "active") {
+                    return [...prev, curr.text];
+                }
+
+                return [...prev]
+
+            },
+            []
+        )
+
+        todasopcoe_canal.forEach((opcoes) => {
+            const newOption = document.createElement('option');
+            newOption.value = opcoes;
+            newOption.textContent = opcoes;
+            defaultOption_canal.appendChild(newOption);
+        });
+
+        // Quando todas as opções estiverem prontas o botão se tranforma em "Selecione" e 
+        // ativa o Menu Suspenso novamente
+        defaultOption_canal.textContent = "Selecione";
+        dropdown_canal.removeAttribute("disabled");
+
 
         // Atualiza URL automaticamente
         atualizarURL();

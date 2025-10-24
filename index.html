@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
+            <p>Todos os links criados e compartilhados em QUALQUER meio devem ser gerados por aqui!</p>
+            
+            <div class="input-row">
+                <div class="input-extra">
+                    <label for="utm_source">Canal: 
+                        <img src="tooltip.png" class="rounded" alt="Dúvida" data-toggle="tooltip" data-placement="top" title="É o origem da mídia que você está usando. Ex: Facebook ads, instagram, indicação.">
+                    </label>
+                    <select id="utm_source" name="utm_source" required>
+                        <option value="Selecione">Carregando...</option>
+                    </select>
+                </div>
+
+                <div class="input-extra">
+                    <label for="utm_medium">Tipo de anuncio:
+                        <img src="tooltip.png" class="rounded" alt="Dúvida" data-toggle="tooltip" data-placement="top" title="É a forma como você está divulgando. Ex: Texto, imagem, post.">
+                    </label>
+                    <select id="utm_medium" name="utm_medium" required>
+                        <option value>Carregando...</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-extra">
+                    <label for="utm_campaign">Campanha:
+                        <img src="tooltip.png" class="rounded" alt="Dúvida" data-toggle="tooltip" data-placement="top" title="É o nome que você escolher pra sua campanha. É você que escreve!">
+                    </label>
+                    <input type="text" id="utm_campaign" placeholder="Campanha">
+                </div>
+
+                <div class="input-extra">
+                    <label for="utm_term">CL: 
+                        <img src="tooltip.png" class="rounded" alt="Dúvida" data-toggle="tooltip" data-placement="top" title="De qual CL será a divulgação.">
+                    </label>
+                    <select id="utm_term" name="utm_term" required>
+                        <option value>Carregando...</option>
+                    </select>
+                </div>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +71,9 @@
 
         <div class="input-row">
             <div class="input-extra">
-                <label for="utm_content">Programas:</label>
+                <label for="utm_content">Programas:
+                    <img src="tooltip.png" class="rounded" alt="Dúvida" data-toggle="tooltip" data-placement="top" title="Para qual programa da AIESEC será sua divulgação.">
+                </label>
                 <select id="utm_content" name="utm_content" required>
                     <option value>Carregando...</option>
                 </select>
