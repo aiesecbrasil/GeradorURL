@@ -1,5 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gerador de URL - AIESEC</title>
+        <meta name="description" content="Gerador de URL da AIESEC no Brasil">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+            crossorigin="anonymous">
+        <link rel="stylesheet" href="./assets/css/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Gerador de URL - AIESEC</h1>
 
             <p>Todos os links criados e compartilhados em QUALQUER meio devem ser gerados por aqui!</p>
             
@@ -39,37 +54,8 @@
                         <option value>Carregando...</option>
                     </select>
                 </div>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de URL - AIESEC</title>
-    <meta name="description" content="Gerador de URL da AIESEC no Brasil">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-
-<body>
-    <div class="container">
-        <h1>Gerador de URL - AIESEC</h1>
-
-        <div class="input-row">
-            <div class="input-extra">
-                <label for="utm_source">Canal:</label>
-                <select id="utm_source" name="utm_source" required>
-                    <option value>Carregando...</option>
-                </select>
             </div>
 
-            <div class="input-extra">
-                <label for="utm_medium">Tipo de anuncio:</label>
-                <select id="utm_medium" name="utm_medium" required>
-                    <option value>Carregando...</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="input-row">
             <div class="input-extra">
                 <label for="utm_content">Programas:
                     <img src="tooltip.png" class="rounded" alt="Dúvida" data-toggle="tooltip" data-placement="top" title="Para qual programa da AIESEC será sua divulgação.">
@@ -79,54 +65,45 @@
                 </select>
             </div>
 
-            <div class="input-extra">
-                <label for="utm_term">CL: </label>
-                <select id="utm_term" name="utm_term" required>
-                    <option value>Carregando...</option>
-                </select>
+            <button id="generateBtn">Gerar URL</button>
+
+            <div class="result-area">
+                <label for="resultUrl">Url Gerada:</label>
+                <input type="text" id="resultUrl" readonly>
+                <button id="copyBtn">Copiar</button>
             </div>
-        </div>
-        <div class="input-extra">
-            <label for="utm_campaign">Campanha:</label>
-            <input type="text" id="utm_campaign" placeholder="Campanha">
-        </div>
 
-
-        <button id="generateBtn">Gerar URL</button>
-
-        <div class="result-area">
-            <label for="resultUrl">Url Gerada:</label>
-            <input type="text" id="resultUrl" readonly>
-            <button id="copyBtn">Copiar</button>
+            <p class="copyright">&copy; AIESEC no Brasil - 2025</p>
         </div>
-        <p id="copyMsg"></p>
-        <p class="copyright">&copy; AIESEC no Brasil - 2025</p>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongTitle"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Confirme seus dados:</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        id="botaoFechar"></button>
-                </div>
-                <div class="modal-body">
-                    <pre id="DadosAqui"></pre>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                        id="botaoCancelar">Cancelar</button>
-                    <button type="button" class="btn btn-primary" id="botaoConfirmar">Enviar</button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1"
+            aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"
+                            id="exampleModalLongTitle">Confirme seus dados:</h5>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"
+                            id="botaoFechar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <pre id="DadosAqui"></pre>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                            id="botaoCancelar">Cancelar</button>
+                        <button type="button" class="btn btn-primary"
+                            id="botaoConfirmar">Enviar</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-    <script src="./assets/js/script.js"></script>
-</body>
-
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+        <script src="./assets/js/script.js"></script>
+    </body>
 </html>
