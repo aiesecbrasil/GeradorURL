@@ -165,6 +165,80 @@ copyBtn.addEventListener("click", async () => {
     }
 });
 
+async function carregarElemento() {
+    //__________________________________________BOTÃO PROGRAMAS____________________________________________________
+
+    // Cria o menu suspenso
+    const dropdown = document.getElementById('utm_content');
+    dropdown.innerHTML = '';
+    dropdown.setAttribute("disabled", "")
+
+    // Cria um botão com a frase "Carregando" enquanto o Menu Suspenso está desativado
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'Carregando';
+    dropdown.appendChild(defaultOption);
+
+    defaultOption.setAttribute('disabled', '');
+    defaultOption.setAttribute('selected', '');
+
+    //____________________________________________________________________________________________________
+
+
+    //__________________________________BOTÃO CL _______________________________________
+
+    // Cria o menu suspenso
+    const dropdown_AiesecProx = document.getElementById('utm_term');
+    dropdown_AiesecProx.innerHTML = '';
+    dropdown_AiesecProx.setAttribute("disabled", "")
+
+    // Cria um botão com a frase "Carregando" enquanto o Menu Suspenso está desativado
+    const defaultOption_AiesecProx = document.createElement('option');
+    defaultOption_AiesecProx.value = '';
+    defaultOption_AiesecProx.textContent = 'Carregando';
+    dropdown_AiesecProx.appendChild(defaultOption_AiesecProx);
+
+    defaultOption_AiesecProx.setAttribute('disabled', '');
+    defaultOption_AiesecProx.setAttribute('selected', '');
+
+    //________________________________________________________________________________________________
+
+    //___________________________BOTÃO CANAL _________________________________________
+
+    // Cria o menu suspenso
+    const dropdown_Como_Conheceu = document.getElementById('utm_source');
+    dropdown_Como_Conheceu.innerHTML = '';
+    dropdown_Como_Conheceu.setAttribute("disabled", "")
+
+    // Cria um botão com a frase "Carregando" enquanto o Menu Suspenso está desativado
+    const defaultOption_Como_Conheceu = document.createElement('option');
+    defaultOption_Como_Conheceu.value = '';
+    defaultOption_Como_Conheceu.textContent = 'Carregando';
+    dropdown_Como_Conheceu.appendChild(defaultOption_Como_Conheceu);
+
+    defaultOption_Como_Conheceu.setAttribute('disabled', '');
+    defaultOption_Como_Conheceu.setAttribute('selected', '');
+
+    //_________________________________________________________________________________________________
+
+    //___________________________BOTÃO TiPOS DE ANUNCIO_________________________________________
+
+    // Cria o menu suspenso
+    const dropdown_tipo_anuncio = document.getElementById('utm_medium');
+    dropdown_tipo_anuncio.innerHTML = '';
+    dropdown_tipo_anuncio.setAttribute("disabled", "")
+
+    // Cria um botão com a frase "Carregando" enquanto o Menu Suspenso está desativado
+    const defaultOption_tipo_anuncio = document.createElement('option');
+    defaultOption_tipo_anuncio.value = '';
+    defaultOption_tipo_anuncio.textContent = 'Carregando';
+    dropdown_tipo_anuncio.appendChild(defaultOption_tipo_anuncio);
+
+    defaultOption_tipo_anuncio.setAttribute('disabled', '');
+    defaultOption_tipo_anuncio.setAttribute('selected', '');
+
+    //_________________________________________________________________________________________________
+
 
 /**
  * Função assíncrona que carrega os dados da API para popular os selects da página.
@@ -207,6 +281,18 @@ async function carregarElemento() {
 
         if (!campos) throw new Error("Campos ausentes na resposta da API.");
 
+        //____________________________Lógica DropDown Programas_____________________________________________________
+
+        // Encontra os produtos dentro dos objetos retornado pela API
+        const produtos = campos.find(field => field.label === "Produto");
+        const opcoesDeProduto = produtos.config.settings.options;
+
+        // Colocando todos os produtos em uma variável chamada todosProdutos
+        // A função reduce serve para fazer chamada recursiva de uma função em todos os elementos do array
+        var todosProdutos = opcoesDeProduto.reduce(
+            function (prev, curr) {
+
+                if (curr.status == "active") {
         // ---------------- PRODUTOS ----------------
         const produtos = campos.find(f => f.label === "Produto");
         ArrayProduto = produtos.config.settings.options.filter(opt => opt.status === "active").map(opt => opt.text);
@@ -233,6 +319,39 @@ async function carregarElemento() {
             opt.textContent = `${cl} (${escritorios[i]})`;
             dropdownAiesec.appendChild(opt);
         });
+
+        // Quando todas as opções estiverem prontas o botão se tranforma em "Selecione" e 
+        // ativa o Menu Suspenso novamente
+        defaultOption_tipo_anuncio.textContent = "Selecione";
+        dropdown_tipo_anuncio.removeAttribute("disabled");
+
+        //________________________________________________________________________________________________
+
+
+        //____________________________Lógica DropDown CL __________________________________________
+
+        const aiesecProx = campos.find(field => field.label === "Qual é a AIESEC mais próxima de você?");
+        const aiesecs = aiesecProx.config.settings.options;
+
+
+        var todasAiesecs = aiesecs.reduce(
+            function (prev, curr) {
+
+                if (curr.status == "active") {
+                    return [...prev, curr.text];
+                }
+
+                return [...prev]
+
+            },
+            []
+        )
+        ArrayCl = todasAiesecs;
+        todasAiesecs.forEach((aiesec) => {
+            const newOption = document.createElement('option');
+            newOption.value = aiesec;
+            newOption.textContent = aiesec;
+            dropdown_AiesecProx.appendChild(newOption);
         dropdownAiesec.removeAttribute("disabled");
 
         // ---------------- COMO CONHECEU ----------------
