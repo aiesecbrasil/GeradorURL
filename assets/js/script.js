@@ -124,7 +124,7 @@ copyBtn.addEventListener("click", async () => {
 });
 
 async function carregarElemento() {
-    //__________________________________________BOTÃO PRODUTO____________________________________________________
+    //__________________________________________BOTÃO PROGRAMAS____________________________________________________
 
     // Cria o menu suspenso
     const dropdown = document.getElementById('utm_content');
@@ -143,7 +143,7 @@ async function carregarElemento() {
     //____________________________________________________________________________________________________
 
 
-    //__________________________________BOTÃO AIESEC MAIS PRÓXIMA_______________________________________
+    //__________________________________BOTÃO CL _______________________________________
 
     // Cria o menu suspenso
     const dropdown_AiesecProx = document.getElementById('utm_term');
@@ -161,7 +161,7 @@ async function carregarElemento() {
 
     //________________________________________________________________________________________________
 
-    //___________________________BOTÃO COMO CONHECEU A AIESEC_________________________________________
+    //___________________________BOTÃO CANAL _________________________________________
 
     // Cria o menu suspenso
     const dropdown_Como_Conheceu = document.getElementById('utm_source');
@@ -179,7 +179,7 @@ async function carregarElemento() {
 
     //_________________________________________________________________________________________________
 
-    //___________________________BOTÃO COMO TiPOS DE ANUNCIO_________________________________________
+    //___________________________BOTÃO TiPOS DE ANUNCIO_________________________________________
 
     // Cria o menu suspenso
     const dropdown_tipo_anuncio = document.getElementById('utm_medium');
@@ -258,7 +258,7 @@ async function carregarElemento() {
 
         }
 
-        //____________________________Lógica Produtos_____________________________________________________
+        //____________________________Lógica DropDown Programas_____________________________________________________
 
         // Encontra os produtos dentro dos objetos retornado pela API
         const produtos = campos.find(field => field.label === "Produto");
@@ -332,7 +332,7 @@ async function carregarElemento() {
         //________________________________________________________________________________________________
 
 
-        //____________________________Lógica Aiesec Mais Próxima__________________________________________
+        //____________________________Lógica DropDown CL __________________________________________
 
         const aiesecProx = campos.find(field => field.label === "Qual é a AIESEC mais próxima de você?");
         const aiesecs = aiesecProx.config.settings.options;
