@@ -17,8 +17,8 @@ const copyMsg = document.getElementById("copyMsg");
 // Siglas dos produtos/programas da AIESEC
 const siglaProduto = [
     'GV',  // Voluntário Global
-    'GTas', // Talento Global Short Term
-    'GTaml', // Talento Global Mid e Long Term
+    'GTa', // Talento Global Short Term
+    'GTa', // Talento Global Mid e Long Term
     'GTe'  // Professor Global
 ];
 
@@ -62,70 +62,6 @@ let ArrayProduto;
 
 // Objeto que armazenará os campos retornados pela API
 let campos;
-let canal;
-let projeto;
-let anuncio;
-let cl;
-
-generateBtn.addEventListener("click", () => {
-    const baseUrl = "https://aiesec.org.br";
-
-    let utm_source = document.getElementById("utm_source");
-    let utm_medium = document.getElementById("utm_medium");
-    let utm_campaign = document.getElementById("utm_campaign");
-    let utm_term = document.getElementById("utm_term");
-    let utm_content = document.getElementById("utm_content");
-
-    if(
-    utm_source.value === "" || 
-    utm_medium.value === "" || 
-    utm_campaign.value.trim() === "" ||
-    utm_term.value === "" ||
-    utm_content.value === ""
-    ){
-
-        // 🔻 Modal de erro
-            const modal = document.getElementById('exampleModalLong');
-            const myModal = new bootstrap.Modal(modal);
-            const botaoEnviar = document.getElementById("botaoConfirmar");
-            const botaoRemover = document.getElementById("botaoCancelar");
-
-            const tituloModal = document.getElementById("exampleModalLongTitle");
-
-            tituloModal.textContent = "Alguns campos não foram preenchidos";
-
-            document.getElementById("DadosAqui").textContent = `Por favor, preencha todos os campos`;
-            botaoEnviar.style.display = 'none';
-            botaoEnviar.disabled = true;
-            botaoRemover.textContent = "Corrigir";
-
-            myModal.show();
-
-            console.error("Alguns campos não foram preenchidos");
-            return;
-
-    }
-
-    utm_source = utm_source.options[utm_source.selectedIndex].value;
-    utm_medium = utm_medium.options[utm_medium.selectedIndex].value;
-    utm_term = utm_term.options[utm_term.selectedIndex].value;
-    utm_content = utm_content.options[utm_content.selectedIndex].value;
-
-    
-    
-    utm_source = encodeURIComponent(slugify(utm_source));
-    utm_medium = encodeURIComponent(slugify(utm_medium));
-    utm_campaign = encodeURIComponent(slugify(document.getElementById("utm_campaign").value.trim()));
-
-    const utm_term_sigla  = ArrayCl.indexOf(utm_term);
-    const utm_content_sigla = ArrayProduto.indexOf(utm_content);
-    const rota = utm_content === "Talento Global Short Term" || utm_content === "Talento Global Mid e Long Term" ? "Talento Global": utm_content;
-    
-    const fullUrl = `${baseUrl}/${slugify(rota)}/?utm_source=${utm_source}&utm_medium=${utm_medium}&utm_campaign=${utm_campaign}&utm_term=${escritorios[utm_term_sigla].toLowerCase()}&utm_content=${siglaProduto[utm_content_sigla].toLowerCase()}`;
-
-    resultUrl.value = fullUrl;
-    copyMsg.textContent = "";
-});
 
 
 // --------------------- BOTÃO GERAR ---------------------
@@ -164,80 +100,6 @@ copyBtn.addEventListener("click", async () => {
         copyMsg.style.color = "red";
     }
 });
-
-async function carregarElemento() {
-    //__________________________________________BOTÃO PROGRAMAS____________________________________________________
-
-    // Cria o menu suspenso
-    const dropdown = document.getElementById('utm_content');
-    dropdown.innerHTML = '';
-    dropdown.setAttribute("disabled", "")
-
-    // Cria um botão com a frase "Carregando" enquanto o Menu Suspenso está desativado
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.textContent = 'Carregando';
-    dropdown.appendChild(defaultOption);
-
-    defaultOption.setAttribute('disabled', '');
-    defaultOption.setAttribute('selected', '');
-
-    //____________________________________________________________________________________________________
-
-
-    //__________________________________BOTÃO CL _______________________________________
-
-    // Cria o menu suspenso
-    const dropdown_AiesecProx = document.getElementById('utm_term');
-    dropdown_AiesecProx.innerHTML = '';
-    dropdown_AiesecProx.setAttribute("disabled", "")
-
-    // Cria um botão com a frase "Carregando" enquanto o Menu Suspenso está desativado
-    const defaultOption_AiesecProx = document.createElement('option');
-    defaultOption_AiesecProx.value = '';
-    defaultOption_AiesecProx.textContent = 'Carregando';
-    dropdown_AiesecProx.appendChild(defaultOption_AiesecProx);
-
-    defaultOption_AiesecProx.setAttribute('disabled', '');
-    defaultOption_AiesecProx.setAttribute('selected', '');
-
-    //________________________________________________________________________________________________
-
-    //___________________________BOTÃO CANAL _________________________________________
-
-    // Cria o menu suspenso
-    const dropdown_Como_Conheceu = document.getElementById('utm_source');
-    dropdown_Como_Conheceu.innerHTML = '';
-    dropdown_Como_Conheceu.setAttribute("disabled", "")
-
-    // Cria um botão com a frase "Carregando" enquanto o Menu Suspenso está desativado
-    const defaultOption_Como_Conheceu = document.createElement('option');
-    defaultOption_Como_Conheceu.value = '';
-    defaultOption_Como_Conheceu.textContent = 'Carregando';
-    dropdown_Como_Conheceu.appendChild(defaultOption_Como_Conheceu);
-
-    defaultOption_Como_Conheceu.setAttribute('disabled', '');
-    defaultOption_Como_Conheceu.setAttribute('selected', '');
-
-    //_________________________________________________________________________________________________
-
-    //___________________________BOTÃO TiPOS DE ANUNCIO_________________________________________
-
-    // Cria o menu suspenso
-    const dropdown_tipo_anuncio = document.getElementById('utm_medium');
-    dropdown_tipo_anuncio.innerHTML = '';
-    dropdown_tipo_anuncio.setAttribute("disabled", "")
-
-    // Cria um botão com a frase "Carregando" enquanto o Menu Suspenso está desativado
-    const defaultOption_tipo_anuncio = document.createElement('option');
-    defaultOption_tipo_anuncio.value = '';
-    defaultOption_tipo_anuncio.textContent = 'Carregando';
-    dropdown_tipo_anuncio.appendChild(defaultOption_tipo_anuncio);
-
-    defaultOption_tipo_anuncio.setAttribute('disabled', '');
-    defaultOption_tipo_anuncio.setAttribute('selected', '');
-
-    //_________________________________________________________________________________________________
 
 
 /**
@@ -281,18 +143,6 @@ async function carregarElemento() {
 
         if (!campos) throw new Error("Campos ausentes na resposta da API.");
 
-        //____________________________Lógica DropDown Programas_____________________________________________________
-
-        // Encontra os produtos dentro dos objetos retornado pela API
-        const produtos = campos.find(field => field.label === "Produto");
-        const opcoesDeProduto = produtos.config.settings.options;
-
-        // Colocando todos os produtos em uma variável chamada todosProdutos
-        // A função reduce serve para fazer chamada recursiva de uma função em todos os elementos do array
-        var todosProdutos = opcoesDeProduto.reduce(
-            function (prev, curr) {
-
-                if (curr.status == "active") {
         // ---------------- PRODUTOS ----------------
         const produtos = campos.find(f => f.label === "Produto");
         ArrayProduto = produtos.config.settings.options.filter(opt => opt.status === "active").map(opt => opt.text);
@@ -319,39 +169,6 @@ async function carregarElemento() {
             opt.textContent = `${cl} (${escritorios[i]})`;
             dropdownAiesec.appendChild(opt);
         });
-
-        // Quando todas as opções estiverem prontas o botão se tranforma em "Selecione" e 
-        // ativa o Menu Suspenso novamente
-        defaultOption_tipo_anuncio.textContent = "Selecione";
-        dropdown_tipo_anuncio.removeAttribute("disabled");
-
-        //________________________________________________________________________________________________
-
-
-        //____________________________Lógica DropDown CL __________________________________________
-
-        const aiesecProx = campos.find(field => field.label === "Qual é a AIESEC mais próxima de você?");
-        const aiesecs = aiesecProx.config.settings.options;
-
-
-        var todasAiesecs = aiesecs.reduce(
-            function (prev, curr) {
-
-                if (curr.status == "active") {
-                    return [...prev, curr.text];
-                }
-
-                return [...prev]
-
-            },
-            []
-        )
-        ArrayCl = todasAiesecs;
-        todasAiesecs.forEach((aiesec) => {
-            const newOption = document.createElement('option');
-            newOption.value = aiesec;
-            newOption.textContent = aiesec;
-            dropdown_AiesecProx.appendChild(newOption);
         dropdownAiesec.removeAttribute("disabled");
 
         // ---------------- COMO CONHECEU ----------------
@@ -381,44 +198,6 @@ async function carregarElemento() {
             dropdownMedium.appendChild(opt);
         });
         dropdownMedium.removeAttribute("disabled");
-
-        // Quando todas as opções estiverem prontas o botão se tranforma em "Selecione" e 
-        // ativa o Menu Suspenso novamente
-        defaultOption_Como_Conheceu.textContent = "Selecione";
-        dropdown_Como_Conheceu.removeAttribute("disabled");
-
-
-
-
-
-        const canal = campos.find(field => field.label === "Como?");
-        const opcoe_canal = canal.config.settings.options;
-
-        var todasopcoe_canal = opcoe_canal.reduce(
-            function (prev, curr) {
-
-                if (curr.status == "active") {
-                    return [...prev, curr.text];
-                }
-
-                return [...prev]
-
-            },
-            []
-        )
-
-        todasopcoe_canal.forEach((opcoes) => {
-            const newOption = document.createElement('option');
-            newOption.value = opcoes;
-            newOption.textContent = opcoes;
-            defaultOption_canal.appendChild(newOption);
-        });
-
-        // Quando todas as opções estiverem prontas o botão se tranforma em "Selecione" e 
-        // ativa o Menu Suspenso novamente
-        defaultOption_canal.textContent = "Selecione";
-        dropdown_canal.removeAttribute("disabled");
-
 
         // Atualiza URL automaticamente
         atualizarURL();
