@@ -43,11 +43,13 @@
 
         <div class="input-row">
             <div class="input-extra">
-                <label for="utm_campaign">Campanha:
+                <label for="utm_content">Programas:
                     <img src="tooltip.png" class="rounded" alt="Dúvida" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="É o nome que você escolher pra sua campanha. É você que escreve!">
+                        data-bs-placement="top" title="Para qual programa da AIESEC será sua divulgação.">
                 </label>
-                <input type="text" id="utm_campaign" placeholder="Campanha">
+                <select id="utm_content" name="utm_content" required>
+                    <option value="">Carregando...</option>
+                </select>
             </div>
 
             <div class="input-extra">
@@ -63,13 +65,11 @@
 
         <div class="input-row">
             <div class="input-extra">
-                <label for="utm_content">Programas:
+                <label for="utm_campaign">Campanha:
                     <img src="tooltip.png" class="rounded" alt="Dúvida" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="Para qual programa da AIESEC será sua divulgação.">
+                        data-bs-placement="top" title="É o nome que você escolher pra sua campanha. É você que escreve!">
                 </label>
-                <select id="utm_content" name="utm_content" required>
-                    <option value="">Carregando...</option>
-                </select>
+                <input type="text" id="utm_campaign" placeholder="Campanha">
             </div>
         </div>
 
@@ -79,7 +79,7 @@
             <label for="resultUrl">Url Gerada:</label>
             <input type="text" id="resultUrl" readonly class="form-control">
             <button id="copyBtn" class="btn btn-secondary mt-2">Copiar</button>
-            <p id="copyMsg" class="mt-2"></p>
+            <p id="copyMsg" class="copyMsg mt-2"></p>
         </div>
 
         <p class="copyright mt-4">&copy; AIESEC no Brasil - 2025</p>
