@@ -49,7 +49,7 @@ img {
 }
 
 h1 {
-    
+    padding-top: 60px;
     color: #0099ff;
     text-align: center;
     font-weight: 500;
@@ -183,6 +183,11 @@ label[for="resultUrl"] {
 }
 
 @media (max-width:768px){
+
+    h1{
+
+        padding-top: 300px;
+    }
 
     .copyright{
         text-align: center;
