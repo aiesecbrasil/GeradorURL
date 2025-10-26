@@ -147,6 +147,7 @@ async function carregarElemento() {
         const produtos = campos.find(f => f.label === "Produto");
         ArrayProduto = produtos.config.settings.options.filter(opt => opt.status === "active").map(opt => opt.text);
 
+        
         const dropdownProduto = document.getElementById("utm_content");
         dropdownProduto.innerHTML = "<option value>Selecione</option>";
         ArrayProduto.forEach((p, i) => {
