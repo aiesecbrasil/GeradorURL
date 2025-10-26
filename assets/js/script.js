@@ -163,7 +163,6 @@ async function carregarElemento() {
         ArrayCl = aiesecProx.config.settings.options.filter(opt => opt.status === "active").map(opt => opt.text);
 
         const dropdownAiesec = document.getElementById("utm_term");
-        dropdownAiesec.innerHTML = "<option value>Selecione</option>";
         ArrayCl.forEach((cl, i) => {
             const opt = document.createElement("option");
             opt.value = cl;
@@ -177,7 +176,6 @@ async function carregarElemento() {
         const ativosComo = comoConheceu.config.settings.options.filter(opt => opt.status === "active").map(opt => opt.text);
 
         const dropdownSource = document.getElementById("utm_source");
-        dropdownSource.innerHTML = "<option value>Selecione</option>";
         ativosComo.forEach(c => {
             const opt = document.createElement("option");
             opt.value = c;
@@ -191,7 +189,6 @@ async function carregarElemento() {
         const ativosTipo = tipoAnuncio.config.settings.options.filter(opt => opt.status === "active").map(opt => opt.text);
 
         const dropdownMedium = document.getElementById("utm_medium");
-        dropdownMedium.innerHTML = "<option value>Selecione</option>";
         ativosTipo.forEach(a => {
             const opt = document.createElement("option");
             opt.value = a;
@@ -199,6 +196,13 @@ async function carregarElemento() {
             dropdownMedium.appendChild(opt);
         });
         dropdownMedium.removeAttribute("disabled");
+
+        // Modifica o botão "Carregando..." para "Selecione"
+        selects.forEach(id => {
+        const dropdown = document.getElementById(id);
+        const selectButton = dropdown.options[0];
+        selectButton.textContent = "Selecione";
+        });
 
         // Atualiza URL automaticamente
         atualizarURL();
