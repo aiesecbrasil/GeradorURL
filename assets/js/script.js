@@ -63,7 +63,6 @@ let ArrayProduto;
 // Objeto que armazenará os campos retornados pela API
 let campos;
 
-
 // --------------------- BOTÃO GERAR ---------------------
 
 // Adiciona um evento de clique ao botão "Gerar URL".
@@ -384,3 +383,105 @@ function inicializarAtualizacaoAutomatica() {
  * @returns {void} Não retorna nada.
  */
 carregarElemento();
+
+
+// _________________________ Botão de Dúvidas _____________________________________________
+
+//  ------------------- Botão Canal ---------------
+const botaoCanal = document.getElementById("botaoCanal");
+
+botaoCanal.addEventListener("click", () => {
+
+    const modalIns = document.getElementById("exampleModalLong");
+    const modalDuvidas = new bootstrap.Modal(modalIns);
+    const tituloModal = document.getElementById("exampleModalLongTitle");
+    const corpoModal = document.getElementById("DadosAqui");
+    const botaoConfirmar = document.getElementById("botaoConfirmar");
+    const botaoCorrigir = document.getElementById("botaoCancelar")
+
+    tituloModal.textContent = "Dúvidas";
+    corpoModal.textContent = "Escrever algo aqui";
+    botaoConfirmar.style.display = "none";
+    botaoCorrigir.textContent = "Prosseguir";
+    modalDuvidas.show();
+});
+
+
+//  ------------------- Botão Anuncio ---------------
+const botaoAnuncio = document.getElementById("botaoAnuncio");
+    
+botaoAnuncio.addEventListener("click", () => {
+
+    const modalIns = document.getElementById("exampleModalLong");
+    const modalDuvidas = new bootstrap.Modal(modalIns);
+    const tituloModal = document.getElementById("exampleModalLongTitle");
+    const corpoModal = document.getElementById("DadosAqui");
+    const botaoConfirmar = document.getElementById("botaoConfirmar");
+    const botaoCorrigir = document.getElementById("botaoCancelar")
+
+    tituloModal.textContent = "Dúvidas";
+    corpoModal.textContent = "Escrever algo aqui";
+    botaoConfirmar.style.display = "none";
+    botaoCorrigir.textContent = "Prosseguir";
+    modalDuvidas.show();
+});
+
+
+//  ------------------- Botão Programas ---------------
+const botaoProgramas = document.getElementById("botaoProgramas");
+
+botaoProgramas.addEventListener("click", () => {
+
+    const modalIns = document.getElementById("exampleModalLong");
+    const modalDuvidas = new bootstrap.Modal(modalIns);
+    const tituloModal = document.getElementById("exampleModalLongTitle");
+    const corpoModal = document.getElementById("DadosAqui");
+    const botaoConfirmar = document.getElementById("botaoConfirmar");
+    const botaoCorrigir = document.getElementById("botaoCancelar")
+
+    tituloModal.textContent = "Dúvidas";
+    corpoModal.textContent = "Escrever algo aqui";
+    botaoConfirmar.style.display = "none";
+    botaoCorrigir.textContent = "Prosseguir";
+    modalDuvidas.show();
+});
+
+
+//  ------------------- Botão CL ---------------
+const botaoCL = document.getElementById("botaoCL");
+
+botaoCL.addEventListener("click", () => {
+
+    const modalIns = document.getElementById("exampleModalLong");
+    const modalDuvidas = new bootstrap.Modal(modalIns);
+    const tituloModal = document.getElementById("exampleModalLongTitle");
+    const corpoModal = document.getElementById("DadosAqui");
+    const botaoConfirmar = document.getElementById("botaoConfirmar");
+    const botaoCorrigir = document.getElementById("botaoCancelar")
+
+    tituloModal.textContent = "Dúvidas";
+    corpoModal.textContent = "Escrever algo aqui";
+    botaoConfirmar.style.display = "none";
+    botaoCorrigir.textContent = "Prosseguir";
+    modalDuvidas.show();
+});
+
+
+//  ------------------- Botão Campanha ---------------
+const botaoCampanha = document.getElementById("botaoCampanha");
+
+botaoCampanha.addEventListener("click", () => {
+
+    const modalIns = document.getElementById("exampleModalLong");
+    const modalDuvidas = new bootstrap.modal(modalIns);
+    const tituloModal = document.getElementById("exampleModalLongTitle");
+    const corpoModal = document.getElementById("DadosAqui");
+    const botaoConfirmar = document.getElementById("botaoConfirmar");
+    const botaoCorrigir = document.getElementById("botaoCancelar")
+
+    tituloModal.textContent = "Dúvidas";
+    corpoModal.textContent = "Escrever algo aqui";
+    botaoConfirmar.style.display = "none";
+    botaoCorrigir.textContent = "Prosseguir";
+    modalDuvidas.show();
+});
