@@ -69,7 +69,39 @@ let campos;
 // Adiciona um evento de clique ao botão "Gerar URL".
 // Quando o usuário clicar no botão, a função `atualizarURL` será chamada.
 // Essa função é responsável por gerar a URL completa com base nos selects e inputs preenchidos.
-generateBtn.addEventListener("click", atualizarURL);
+generateBtn.addEventListener("click", () => {
+    
+    const utm_source = document.getElementById("utm_source")?.value; // Fonte de tráfego
+    const utm_medium = document.getElementById("utm_medium")?.value; // Tipo de anúncio
+    const utm_campaign = document.getElementById("utm_campaign")?.value?.trim(); // Nome da campanha
+    const utm_term = document.getElementById("utm_term")?.value; // Cl/Escritório
+    const utm_content = document.getElementById("utm_content")?.value; // Produto
+
+    if (!utm_source || !utm_medium || !utm_campaign || !utm_term || !utm_content){
+
+        const modal = document.getElementById("exampleModalLong");
+        const modalErro = new bootstrap.Modal(modal);
+        
+        const tituloModal = document.getElementById("exampleModalLongTitle");
+        tituloModal.textContent = "Erro!";
+
+        const corpoModal = document.getElementById("DadosAqui");
+        corpoModal.textContent = "Para gerar a URL, preencha todos os campos.";
+        
+        const botaoConfirmar = document.getElementById("botaoConfirmar");
+        botaoConfirmar.style.display = "none";
+
+        const botaoCorrigir = document.getElementById("botaoCancelar")
+        botaoCorrigir.textContent = "Corrigir";
+        
+        modalErro.show();
+
+        return;
+    }
+
+    atualizarURL;
+
+});
 
 
 // --------------------- BOTÃO COPIAR ---------------------
@@ -149,7 +181,6 @@ async function carregarElemento() {
 
         
         const dropdownProduto = document.getElementById("utm_content");
-        dropdownProduto.innerHTML = "<option value>Selecione</option>";
         ArrayProduto.forEach((p, i) => {
             const opt = document.createElement("option");
             opt.value = p;
@@ -303,8 +334,17 @@ function atualizarURL() {
     // Monta a URL final com os parâmetros UTM
     const fullUrl = `${baseUrl}/${rota}/?utm_source=${source}&utm_medium=${medium}&utm_campaign=${campaign}&utm_term=${escritorios[termSigla]?.toLowerCase() ?? ""}&utm_content=${siglaProduto[contentSigla]?.toLowerCase() ?? ""}`;
 
-    resultUrl.value = fullUrl; // Atualiza o campo de resultado da URL
-    copyMsg.textContent = "";   // Limpa a mensagem de copiar
+    //Se todos os campos não estiverem preenchidos, a URL não será gerada automaticamente
+    if (!utm_source || !utm_medium || !utm_campaign || !utm_term || !utm_content) {
+        resultUrl.value = "";
+        return;
+    } else{
+
+        resultUrl.value = fullUrl; // Atualiza o campo de resultado da URL
+        copyMsg.textContent = "";   // Limpa a mensagem de copiar
+
+    }
+
 }
 
 
@@ -322,6 +362,7 @@ function inicializarAtualizacaoAutomatica() {
     // IDs dos campos que devem ser monitorados
     const camposIds = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 
+    
     // Percorre todos os IDs e adiciona listeners de evento
     camposIds.forEach(id => {
         const el = document.getElementById(id); // Seleciona o elemento pelo ID
