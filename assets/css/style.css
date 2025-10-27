@@ -181,11 +181,7 @@ label[for="resultUrl"] {
     border: 1px solid #ccd6eb;
     background-color: #fff;
 }
-.copyMsg{
-    color: green;
-    font-size: 14px;
-    margin-left: 10px;
-}
+
 .copyright {
 
     text-align: center;
