@@ -399,10 +399,14 @@ botaoCanal.addEventListener("click", () => {
     const botaoConfirmar = document.getElementById("botaoConfirmar");
     const botaoCorrigir = document.getElementById("botaoCancelar")
 
-    tituloModal.textContent = "Dúvidas";
-    corpoModal.textContent = "Escrever algo aqui";
+    tituloModal.textContent = "Canal";
+    corpoModal.textContent = `É o canal de mídia utilizado para divulgar a vaga. Ex: 
+    - Facebook ads, 
+    - instagram, 
+    - indicação.
+    - Lindekin`;
     botaoConfirmar.style.display = "none";
-    botaoCorrigir.textContent = "Prosseguir";
+    botaoCorrigir.textContent = "Fechar";
     modalDuvidas.show();
 });
 
@@ -419,10 +423,15 @@ botaoAnuncio.addEventListener("click", () => {
     const botaoConfirmar = document.getElementById("botaoConfirmar");
     const botaoCorrigir = document.getElementById("botaoCancelar")
 
-    tituloModal.textContent = "Dúvidas";
-    corpoModal.textContent = "Escrever algo aqui";
+    tituloModal.textContent = "Tipo de anuncio";
+    corpoModal.textContent = `Tipo de Metodo ou técnica utilizada para atrair os leads
+    EX:
+    - Stories
+    - Banner
+    - Interação
+    - Indicação`;
     botaoConfirmar.style.display = "none";
-    botaoCorrigir.textContent = "Prosseguir";
+    botaoCorrigir.textContent = "Fechar";
     modalDuvidas.show();
 });
 
@@ -439,10 +448,15 @@ botaoProgramas.addEventListener("click", () => {
     const botaoConfirmar = document.getElementById("botaoConfirmar");
     const botaoCorrigir = document.getElementById("botaoCancelar")
 
-    tituloModal.textContent = "Dúvidas";
-    corpoModal.textContent = "Escrever algo aqui";
+    tituloModal.textContent = "Programas";
+    corpoModal.textContent = `Os Tipos de Programas de Intercambios
+    Ex:
+    Voluntário Global - GV
+    Talento Global Short Term - GTas
+    Talento Global Mid e Long Term - GTaml
+    Professor Global - GTe`;
     botaoConfirmar.style.display = "none";
-    botaoCorrigir.textContent = "Prosseguir";
+    botaoCorrigir.textContent = "Fechar";
     modalDuvidas.show();
 });
 
@@ -459,10 +473,14 @@ botaoCL.addEventListener("click", () => {
     const botaoConfirmar = document.getElementById("botaoConfirmar");
     const botaoCorrigir = document.getElementById("botaoCancelar")
 
-    tituloModal.textContent = "Dúvidas";
-    corpoModal.textContent = "Escrever algo aqui";
+    tituloModal.textContent = "Comite Local";
+    corpoModal.textContent = `Informe de qual Comite está vindo a campanha
+    Ex:
+    - Aiesec em Recife
+    - Aiesec em Aracaju
+    - Aiesec em Salvador`;
     botaoConfirmar.style.display = "none";
-    botaoCorrigir.textContent = "Prosseguir";
+    botaoCorrigir.textContent = "Fechar";
     modalDuvidas.show();
 });
 
@@ -473,15 +491,17 @@ const botaoCampanha = document.getElementById("botaoCampanha");
 botaoCampanha.addEventListener("click", () => {
 
     const modalIns = document.getElementById("exampleModalLong");
-    const modalDuvidas = new bootstrap.modal(modalIns);
+    const modalDuvidas = new bootstrap.Modal(modalIns);
     const tituloModal = document.getElementById("exampleModalLongTitle");
     const corpoModal = document.getElementById("DadosAqui");
     const botaoConfirmar = document.getElementById("botaoConfirmar");
     const botaoCorrigir = document.getElementById("botaoCancelar")
 
-    tituloModal.textContent = "Dúvidas";
-    corpoModal.textContent = "Escrever algo aqui";
+    tituloModal.textContent = "Campanha";
+    corpoModal.textContent = `Informe a campanha que está divulgando, de forma escrita
+    Ex:
+    - Blue Friday`;
     botaoConfirmar.style.display = "none";
-    botaoCorrigir.textContent = "Prosseguir";
+    botaoCorrigir.textContent = "Fechar";
     modalDuvidas.show();
 });
