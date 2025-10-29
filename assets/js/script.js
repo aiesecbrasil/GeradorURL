@@ -17,8 +17,8 @@ const copyMsg = document.getElementById("copyMsg");
 // Siglas dos produtos/programas da AIESEC
 const siglaProduto = [
     'GV',  // Voluntário Global
-    'GTas', // Talento Global Short Term
-    'GTaml', // Talento Global Mid e Long Term
+    'GTast', // Talento Global Short Term
+    'GTalt', // Talento Global Mid e Long Term
     'GTe'  // Professor Global
 ];
 
@@ -452,8 +452,8 @@ botaoProgramas.addEventListener("click", () => {
     corpoModal.textContent = `Os Tipos de Programas de Intercambios
     Ex:
     Voluntário Global - GV
-    Talento Global Short Term - GTas
-    Talento Global Mid e Long Term - GTaml
+    Talento Global Short Term - GTast
+    Talento Global Mid e Long Term - GTalt
     Professor Global - GTe`;
     botaoConfirmar.style.display = "none";
     botaoCorrigir.textContent = "Fechar";
