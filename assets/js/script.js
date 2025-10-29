@@ -452,8 +452,8 @@ botaoProgramas.addEventListener("click", () => {
     corpoModal.textContent = `Os Tipos de Programas de Intercambios
     Ex:
     Voluntário Global - GV
-    Talento Global Short Term - GTast
-    Talento Global Mid e Long Term - GTalt
+    Talento Global Short Term - GTaSt
+    Talento Global Mid e Long Term - GTaLt
     Professor Global - GTe`;
     botaoConfirmar.style.display = "none";
     botaoCorrigir.textContent = "Fechar";
