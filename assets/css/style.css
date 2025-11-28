@@ -22,10 +22,22 @@ p {
     
 }
 
-img {
-  max-width: 24px;
-  max-height:24px;
-  margin-bottom: 5px;
+
+.btn-info {
+
+    background-color: #ffffff; 
+    border-color: #ffffff; 
+    background-image: url('/tooltip.png');
+    background-size: contain;
+    width: 22px;
+    height: 22px;
+    margin-bottom: 11px;
+
+}
+
+.btn-secondary:hover {
+  background-color: #ffffff; 
+  border-color: #ffffff;
 }
 
 .container {
