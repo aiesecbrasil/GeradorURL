@@ -400,7 +400,7 @@ botaoCanal.addEventListener("click", () => {
     const botaoCorrigir = document.getElementById("botaoCancelar")
 
     tituloModal.textContent = "Dúvidas";
-    corpoModal.textContent = "Escrever algo aqui";
+    corpoModal.textContent = "Qual Canal de Comunicação foi Utilizado";
     botaoConfirmar.style.display = "none";
     botaoCorrigir.textContent = "Prosseguir";
     modalDuvidas.show();
@@ -420,7 +420,7 @@ botaoAnuncio.addEventListener("click", () => {
     const botaoCorrigir = document.getElementById("botaoCancelar")
 
     tituloModal.textContent = "Dúvidas";
-    corpoModal.textContent = "Escrever algo aqui";
+    corpoModal.textContent = "Qual Tipo de Anuncio foi Feito para divulgação";
     botaoConfirmar.style.display = "none";
     botaoCorrigir.textContent = "Prosseguir";
     modalDuvidas.show();
@@ -440,7 +440,7 @@ botaoProgramas.addEventListener("click", () => {
     const botaoCorrigir = document.getElementById("botaoCancelar")
 
     tituloModal.textContent = "Dúvidas";
-    corpoModal.textContent = "Escrever algo aqui";
+    corpoModal.textContent = "Qual Tipo de Programa está sendo divulgado";
     botaoConfirmar.style.display = "none";
     botaoCorrigir.textContent = "Prosseguir";
     modalDuvidas.show();
@@ -460,7 +460,7 @@ botaoCL.addEventListener("click", () => {
     const botaoCorrigir = document.getElementById("botaoCancelar")
 
     tituloModal.textContent = "Dúvidas";
-    corpoModal.textContent = "Escrever algo aqui";
+    corpoModal.textContent = "Qual Cl está divulgando a Vaga";
     botaoConfirmar.style.display = "none";
     botaoCorrigir.textContent = "Prosseguir";
     modalDuvidas.show();
@@ -480,7 +480,7 @@ botaoCampanha.addEventListener("click", () => {
     const botaoCorrigir = document.getElementById("botaoCancelar")
 
     tituloModal.textContent = "Dúvidas";
-    corpoModal.textContent = "Escrever algo aqui";
+    corpoModal.textContent = "Informe a campanha";
     botaoConfirmar.style.display = "none";
     botaoCorrigir.textContent = "Prosseguir";
     modalDuvidas.show();
